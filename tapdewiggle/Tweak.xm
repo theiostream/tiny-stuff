@@ -10,34 +10,21 @@
 
 #include <objc/runtime.h>
 
-@interface SBIconScrollView : UIScrollView <UIGestureRecognizerDelegate>
-@end
-
 @interface SBIconController : NSObject {}
 + (id)sharedInstance;
 - (BOOL)isEditing;
 - (void)setIsEditing:(BOOL)isEditing;
 @end
 
-static BOOL touchValid = NO;
+static id controller = nil;
 
 %hook SBIconScrollView
-- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {	
-	if ([[objc_getClass("SBIconController") sharedInstance] isEditing]) {
-		touchValid = YES;
-	}
-	
-	%orig;
-}
-
-- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
-	touchValid = NO;
-	%orig;
-}
-
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (touchValid) {
-		[[objc_getClass("SBIconController") sharedInstance] setIsEditing:NO];
+	if (!controller) controller = [%c(SBIconController) sharedInstance];
+	
+	if (controller != nil) {
+		NSLog(@"MEH");
+		[controller setIsEditing:NO];
 	}
 	
 	%orig;

@@ -1,7 +1,7 @@
 Package: com.yourcompany.tapdewiggle
 Name: TapDewiggle
 Depends: mobilesubstrate
-Version: 0.0.1-35
+Version: 0.0.1-42
 Architecture: iphoneos-arm
 Description: An awesome MobileSubstrate tweak!
 Maintainer: theiostream
