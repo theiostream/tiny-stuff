@@ -1,0 +1,9 @@
+Package: com.yourcompany.opendismiss
+Name: OpenDismiss
+Depends: mobilesubstrate, com.zimm.libdisplaystack
+Version: 0.0.1
+Architecture: iphoneos-arm
+Description: An awesome MobileSubstrate tweak!
+Maintainer: theiostream
+Author: theiostream
+Section: Tweaks
