@@ -20,7 +20,7 @@ static id _item = nil;
 		id topApp = [astack topApplication];
 		
 		if ([[topApp displayIdentifier] isEqualToString:[[_item seedBulletin] sectionID]]) {
-			[banner_controller dismissBanner];
+			[banner_controller dismissBannerWithAnimation:1];
 		}
 	}
 }
