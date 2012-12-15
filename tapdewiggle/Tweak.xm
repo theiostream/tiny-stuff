@@ -20,12 +20,8 @@ static id controller = nil;
 
 %hook SBIconScrollView
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-	if (!controller) controller = [%c(SBIconController) sharedInstance];
-	
-	if (controller != nil) {
-		NSLog(@"MEH");
-		[controller setIsEditing:NO];
-	}
+	if (controller == nil) controller = [%c(SBIconController) sharedInstance];
+	[controller setIsEditing:NO];
 	
 	%orig;
 }
